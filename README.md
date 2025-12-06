@@ -1,9 +1,6 @@
 # pipeline somatico
 
+Clonar o github
 ```bash
-!pip install pandas
-```
-```python
-import pandas as pd
-pd.read_csv('results/WP048/alterations.tsv',sep='\t',index_col=False, engine= 'python')
+!git clone https://github.com/renatopuga/lmabrasil-hg38.git
 ```
