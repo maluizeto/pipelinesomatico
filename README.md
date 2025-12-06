@@ -72,6 +72,10 @@ Descompactar o zip com os resultados
 ```bash
 !unzip -o /content/results/WP048/W048-cgi.zip -d /content/results/WP048/
 ```
-
-
-`
+Instalar pip panda 
+```bash
+!pip install pandas
+```python
+import pandas as pd
+pd.read_csv('/content/results/WP048/alterations.tsv',sep='\t',index_col=False, engine= 'python')
+```
