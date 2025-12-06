@@ -75,6 +75,7 @@ Descompactar o zip com os resultados
 Instalar pip panda 
 ```bash
 !pip install pandas
+```
 ```python
 import pandas as pd
 pd.read_csv('/content/results/WP048/alterations.tsv',sep='\t',index_col=False, engine= 'python')
