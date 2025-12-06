@@ -407,6 +407,9 @@ import pandas as pd
 pd.read_csv('/content/results/WP068/alterations.tsv',sep='\t',index_col=False, engine= 'python')
 ```
 
+# Tabela 
+
+
 Agora vamos juntas todas as tabelas em só uma tabela 
 
 ```python
