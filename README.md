@@ -163,11 +163,6 @@ Instalar pip panda
 import pandas as pd
 pd.read_csv('/content/results/WP017/alterations.tsv',sep='\t',index_col=False, engine= 'python')
 ```
-Gerar tabela 
-```bash
-cut -f1-4 /content/lmabrasil-hg38/vep_output/liftOver_WP048_hg19ToHg38.vep.filter.tsv | sed -e "s/CHROM/CHR/g"  > df_WP048-cgi.txt
-cut -f1-4 /content/lmabrasil-hg38/vep_output/liftOver_WP017_hg19ToHg38.vep.filter.tsv | sed -e "s/CHROM/CHR/g"  > df_WP048-cgi.txt
-```
 
 
 # Amostra WP019
@@ -410,6 +405,34 @@ Instalar pip panda
 ```python
 import pandas as pd
 pd.read_csv('/content/results/WP068/alterations.tsv',sep='\t',index_col=False, engine= 'python')
+```
+
+Agora vamos juntas todas as tabelas em só uma tabela 
+
+```python
+import pandas as pd
+
+wp048 = pd.read_csv('/content/results/WP048/alterations.tsv', sep='\t')
+wp017 = pd.read_csv('/content/results/WP017/alterations.tsv', sep='\t')
+wp019 = pd.read_csv('/content/results/WP019/alterations.tsv', sep='\t')
+wp058 = pd.read_csv('/content/results/WP058/alterations.tsv', sep='\t')
+wp068 = pd.read_csv('/content/results/WP068/alterations.tsv', sep='\t')
+
+
+wp048["Sample"] = "WP048"
+wp017["Sample"] = "WP017"
+wp019["Sample"] = "WP019"
+wp058["Sample"] = "WP058"
+wp068["Sample"] = "WP068"
+
+tabela_final = pd.concat([wp048, wp017, wp019, wp058, wp068], ignore_index=True)
+
+tabela_final.head()
+
+tabela_final.to_csv("tabela_final_CGI.tsv", sep="\t", index=False)
+
+cols = ["Sample"] + [c for c in tabela_final.columns if c != "Sample"]
+tabela_final = tabela_final[cols]
 ```
 
 
