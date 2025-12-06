@@ -27,8 +27,17 @@ r = requests.post('https://www.cancergenomeinterpreter.org/api/v1',
                         'mutations': open('df_WP048-cgi.txt', 'rb')
                         },
                 data=payload)
+
+r.json()
+
+Status do JobID - A partir disso teremos nosso id job
+```python
+import requests
+job_id = "b0a7ea9ba22a3eade52f"
+
+headers = {'Authorization': 'maluizeto@gmail.com cc8e478a27b52f75b94a'}
+r = requests.get('https://www.cancergenomeinterpreter.org/api/v1/%s' % job_id, headers=headers)
 r.json()
 ```
-```bash
 
-```
+`
