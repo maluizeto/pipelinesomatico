@@ -42,4 +42,33 @@ r = requests.get('https://www.cancergenomeinterpreter.org/api/v1/%s' % job_id, h
 r.json()
 ```
 
+Log ID
+
+```python
+import requests
+job_id = "b0a7ea9ba22a3eade52f"
+
+headers = {'Authorization': 'maluizeto@gmail.com cc8e478a27b52f75b94a'}
+payload={'action':'logs'}
+r = requests.get('https://www.cancergenomeinterpreter.org/api/v1/%s' % job_id, headers=headers, params=payload)
+r.json()
+```
+Download dos resultados - Criar o diretorio com o ID da amostra dentro de results
+```bash
+mkdir -p results/WP048
+```
+```python
+import requests
+job_id = "b0a7ea9ba22a3eade52f"
+
+headers = {'Authorization': 'maluizeto@gmail.com cc8e478a27b52f75b94a'}
+payload={'action':'download'}
+r = requests.get('https://www.cancergenomeinterpreter.org/api/v1/%s' % job_id, headers=headers, params=payload)
+with open('/content/results/WP048/W048-cgi.zip', 'wb') as fd:
+    fd.write(r._content)
+```
+
+
+
+
 `
