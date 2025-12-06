@@ -1,4 +1,4 @@
-# Pipeline Somético 
+# Pipeline Somático 
 
 Amostra WP048
 
