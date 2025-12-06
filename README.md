@@ -1,6 +1,6 @@
 # Pipeline Somático 
 
-Amostra WP048
+# Amostra WP048
 
 
 
@@ -79,4 +79,87 @@ Instalar pip panda
 ```python
 import pandas as pd
 pd.read_csv('/content/results/WP048/alterations.tsv',sep='\t',index_col=False, engine= 'python')
+```
+
+
+
+# Amostra WP017
+
+
+
+Clonar o github Imabrasil-hg38
+```bash
+!git clone https://github.com/renatopuga/lmabrasil-hg38.git
+```
+Agora vá até o github Imabrasil-hg38 na seção Usando CGI via API Rest no google Colab 
+```python
+!cut -f1-4 /content/lmabrasil-hg38/vep_output/liftOver_WP048_hg19ToHg38.vep.filter.tsv | sed -e "s/CHROM/CHR/g"  > df_WP017-cgi.txt
+head df_WP017-cgi.txt
+```
+Código para listar as 10 primeiras linhas do código
+```bash
+!head df_WP017-cgi.txt
+```
+Enviar Job para CGI API - Entrar no site do CGI, fazer o login e criar o seu token
+Fonte: https://www.cancergenomeinterpreter.org/rest_api
+```python
+import requests
+headers = {'Authorization': 'maluizeto@gmail.com cc8e478a27b52f75b94a'}
+payload = {'cancer_type': 'HEMATO', 'title': 'Somatic MF WP017', 'reference': 'hg38'}
+r = requests.post('https://www.cancergenomeinterpreter.org/api/v1',
+                headers=headers,
+                files={
+                        'mutations': open('df_WP017-cgi.txt', 'rb')
+                        },
+                data=payload)
+
+r.json()
+```
+Status do JobID - A partir disso teremos nosso id job
+```python
+import requests
+job_id = "b0a7ea9ba22a3eade52f"
+
+headers = {'Authorization': 'maluizeto@gmail.com cc8e478a27b52f75b94a'}
+r = requests.get('https://www.cancergenomeinterpreter.org/api/v1/%s' % job_id, headers=headers)
+r.json()
+```
+
+Log ID
+
+```python
+import requests
+job_id = "b0a7ea9ba22a3eade52f"
+
+headers = {'Authorization': 'maluizeto@gmail.com cc8e478a27b52f75b94a'}
+payload={'action':'logs'}
+r = requests.get('https://www.cancergenomeinterpreter.org/api/v1/%s' % job_id, headers=headers, params=payload)
+r.json()
+```
+Download dos resultados - Criar o diretorio com o ID da amostra dentro de results
+```bash
+!mkdir -p results/WP017
+```
+```python
+import requests
+job_id = "b0a7ea9ba22a3eade52f"
+
+headers = {'Authorization': 'maluizeto@gmail.com cc8e478a27b52f75b94a'}
+payload={'action':'download'}
+r = requests.get('https://www.cancergenomeinterpreter.org/api/v1/%s' % job_id, headers=headers, params=payload)
+with open('/content/results/WP017/W017-cgi.zip', 'wb') as fd:
+    fd.write(r._content)
+```
+
+Descompactar o zip com os resultados
+```bash
+!unzip -o /content/results/WP017/W017-cgi.zip -d /content/results/WP017/
+```
+Instalar pip panda 
+```bash
+!pip install pandas
+```
+```python
+import pandas as pd
+pd.read_csv('/content/results/WP017/alterations.tsv',sep='\t',index_col=False, engine= 'python')
 ```
