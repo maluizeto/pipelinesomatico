@@ -55,7 +55,7 @@ r.json()
 ```
 Download dos resultados - Criar o diretorio com o ID da amostra dentro de results
 ```bash
-mkdir -p results/WP048
+!mkdir -p results/WP048
 ```
 ```python
 import requests
@@ -68,7 +68,10 @@ with open('/content/results/WP048/W048-cgi.zip', 'wb') as fd:
     fd.write(r._content)
 ```
 
-
+Descompactar o zip com os resultados
+```bash
+!unzip -o /content/results/WP048/W048-cgi.zip -d /content/results/WP048/
+```
 
 
 `
