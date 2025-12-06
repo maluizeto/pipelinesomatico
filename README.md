@@ -1,6 +1,8 @@
-# pipeline somatico
+# Pipeline Somético 
 
-# AMOSTRA WP048
+Amostra WP048
+
+
 
 Clonar o github Imabrasil-hg38
 ```bash
