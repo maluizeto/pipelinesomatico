@@ -15,10 +15,9 @@ Código para listar as 10 primeiras linhas do código
 ```bash
 head df_WP048-cgi.txt
 ```
-Enviar Job para CGI API
+Enviar Job para CGI API - Entrar no site do CGI, fazer o login e criar o seu token
 Fonte: https://www.cancergenomeinterpreter.org/rest_api
-Entrar no site do CGI, fazer o login e criar o seu token
-```pyhton
+```python
 import requests
 headers = {'Authorization': 'maluizeto@gmail.com cc8e478a27b52f75b94a'}
 payload = {'cancer_type': 'HEMATO', 'title': 'Somatic MF WP048', 'reference': 'hg38'}
