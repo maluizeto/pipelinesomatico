@@ -6,7 +6,7 @@
 ```bash
 !git clone https://github.com/renatopuga/lmabrasil-hg38.git
 ```
-Agora vá até o github Imabrasil-hg38 na seção Usando CGI via API Rest no google Colab 
+### 2. Agora vá até o github Imabrasil-hg38 na seção Usando CGI via API Rest no google Colab 
 ```python
 !cut -f1-4 /content/lmabrasil-hg38/vep_output/liftOver_WP048_hg19ToHg38.vep.filter.tsv | sed -e "s/CHROM/CHR/g"  > df_WP048-cgi.txt
 head df_WP048-cgi.txt
@@ -15,7 +15,7 @@ Código para listar as 10 primeiras linhas do código
 ```bash
 !head df_WP048-cgi.txt
 ```
-### 2. Enviar Job para CGI API - Entrar no site do CGI, fazer o login e criar o seu token <br>
+### 3. Enviar Job para CGI API - Entrar no site do CGI, fazer o login e criar o seu token <br>
 Fonte: https://www.cancergenomeinterpreter.org/rest_api
 ```python
 import requests
@@ -30,7 +30,7 @@ r = requests.post('https://www.cancergenomeinterpreter.org/api/v1',
 
 r.json()
 ```
-### 3. Status do JobID - A partir disso teremos nosso id job
+### 4. Status do JobID - A partir disso teremos nosso id job
 ```python
 import requests
 job_id = "b0a7ea9ba22a3eade52f"
@@ -40,7 +40,7 @@ r = requests.get('https://www.cancergenomeinterpreter.org/api/v1/%s' % job_id, h
 r.json()
 ```
 
-### 4. Log ID
+### 5. Log ID
 
 ```python
 import requests
@@ -51,14 +51,11 @@ payload={'action':'logs'}
 r = requests.get('https://www.cancergenomeinterpreter.org/api/v1/%s' % job_id, headers=headers, params=payload)
 r.json()
 ```
-### 5. Download dos resultados - Criar o diretorio com o ID da amostra dentro de results
+### 6. Download dos resultados - Criar o diretorio com o ID da amostra dentro de results
 #### Descrever cada arquivo de resultado:
-*alterations.tsv:* arquivo tabulado que contém as variantes genéticas identificadas após o processamento e filtragem do VCF;
-
-*biomarkers.tsv:* tabela contendo os biomarcadores associados às variantes detectadas;
-
-*input01.tsv:* arquivo de entrada do pipeline, contendo os dados iniciais que serão analisados;
-
+*alterations.tsv:* arquivo tabulado que contém as variantes genéticas identificadas após o processamento e filtragem do VCF; <br>
+*biomarkers.tsv:* tabela contendo os biomarcadores associados às variantes detectadas;<br>
+*input01.tsv:* arquivo de entrada do pipeline, contendo os dados iniciais que serão analisados;<br>
 *summary.txt:* arquivo de texto com um resumo final da análise.
 
 ```bash
