@@ -1,10 +1,8 @@
 # Pipeline Somático 
 
-# Amostra WP048
+## Amostra WP048
 
-
-
-Clonar o github Imabrasil-hg38
+### 1.Clonar o github Imabrasil-hg38
 ```bash
 !git clone https://github.com/renatopuga/lmabrasil-hg38.git
 ```
