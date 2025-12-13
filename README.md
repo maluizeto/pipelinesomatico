@@ -15,7 +15,7 @@ Código para listar as 10 primeiras linhas do código
 ```bash
 !head df_WP048-cgi.txt
 ```
-### 2. Enviar Job para CGI API - Entrar no site do CGI, fazer o login e criar o seu token
+### 2. Enviar Job para CGI API - Entrar no site do CGI, fazer o login e criar o seu token <br>
 Fonte: https://www.cancergenomeinterpreter.org/rest_api
 ```python
 import requests
