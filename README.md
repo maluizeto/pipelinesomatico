@@ -2,7 +2,7 @@
 
 ## Amostra WP048
 
-### 1.Clonar o github Imabrasil-hg38
+### 1. Clonar o github Imabrasil-hg38
 ```bash
 !git clone https://github.com/renatopuga/lmabrasil-hg38.git
 ```
@@ -15,7 +15,7 @@ Código para listar as 10 primeiras linhas do código
 ```bash
 !head df_WP048-cgi.txt
 ```
-Enviar Job para CGI API - Entrar no site do CGI, fazer o login e criar o seu token
+### 2. Enviar Job para CGI API - Entrar no site do CGI, fazer o login e criar o seu token
 Fonte: https://www.cancergenomeinterpreter.org/rest_api
 ```python
 import requests
@@ -40,7 +40,7 @@ r = requests.get('https://www.cancergenomeinterpreter.org/api/v1/%s' % job_id, h
 r.json()
 ```
 
-Log ID
+### 3. Log ID
 
 ```python
 import requests
@@ -51,7 +51,13 @@ payload={'action':'logs'}
 r = requests.get('https://www.cancergenomeinterpreter.org/api/v1/%s' % job_id, headers=headers, params=payload)
 r.json()
 ```
-Download dos resultados - Criar o diretorio com o ID da amostra dentro de results
+### 4. Download dos resultados - Criar o diretorio com o ID da amostra dentro de results
+#### Descrever cada arquivo de resultado:
+*alterations.tsv:* arquivo tabulado que contém as variantes genéticas identificadas após o processamento e filtragem do VCF;
+*biomarkers.tsv:* tabela contendo os biomarcadores associados às variantes detectadas;
+*input01.tsv:* arquivo de entrada do pipeline, contendo os dados iniciais que serão analisados;
+*summary.txt:* arquivo de texto com um resumo final da análise.
+
 ```bash
 !mkdir -p results/WP048
 ```
