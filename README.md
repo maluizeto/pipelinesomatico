@@ -350,7 +350,7 @@ payload = {'cancer_type': 'HEMATO', 'title': 'Somatic MF WP068', 'reference': 'h
 r = requests.post('https://www.cancergenomeinterpreter.org/api/v1',
                 headers=headers,
                 files={
-                        'mutations': open('df_WP058-cgi.txt', 'rb')
+                        'mutations': open('df_WP068-cgi.txt', 'rb')
                         },
                 data=payload)
 
