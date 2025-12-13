@@ -155,11 +155,11 @@ with open('/content/results/WP017/W017-cgi.zip', 'wb') as fd:
     fd.write(r._content)
 ```
 
-Descompactar o zip com os resultados
+### 7. Descompactar o zip com os resultados
 ```bash
 !unzip -o /content/results/WP017/W017-cgi.zip -d /content/results/WP017/
 ```
-Instalar pip panda 
+### 8. Instalar pip panda 
 ```bash
 !pip install pandas
 ```
@@ -169,15 +169,13 @@ pd.read_csv('/content/results/WP017/alterations.tsv',sep='\t',index_col=False, e
 ```
 
 
-# Amostra WP019
+## Amostra WP019
 
-
-
-Clonar o github Imabrasil-hg38
+### 1. Clonar o github Imabrasil-hg38
 ```bash
 !git clone https://github.com/renatopuga/lmabrasil-hg38.git
 ```
-Agora vá até o github Imabrasil-hg38 na seção Usando CGI via API Rest no google Colab 
+### 2. Agora vá até o github Imabrasil-hg38 na seção Usando CGI via API Rest no google Colab 
 ```python
 !cut -f1-4 /content/lmabrasil-hg38/vep_output/liftOver_WP019_hg19ToHg38.vep.filter.tsv | sed -e "s/CHROM/CHR/g"  > df_WP019-cgi.txt
 ```
@@ -185,7 +183,7 @@ Código para listar as 10 primeiras linhas do código
 ```bash
 !head df_WP019-cgi.txt
 ```
-Enviar Job para CGI API - Entrar no site do CGI, fazer o login e criar o seu token
+### 3. Enviar Job para CGI API - Entrar no site do CGI, fazer o login e criar o seu token
 Fonte: https://www.cancergenomeinterpreter.org/rest_api
 ```python
 import requests
@@ -200,7 +198,7 @@ r = requests.post('https://www.cancergenomeinterpreter.org/api/v1',
 
 r.json()
 ```
-Status do JobID - A partir disso teremos nosso id job
+### 4. Status do JobID - A partir disso teremos nosso id job
 ```python
 import requests
 job_id = "b0a7ea9ba22a3eade52f"
@@ -210,7 +208,7 @@ r = requests.get('https://www.cancergenomeinterpreter.org/api/v1/%s' % job_id, h
 r.json()
 ```
 
-Log ID
+### 5. Log ID
 
 ```python
 import requests
@@ -221,7 +219,7 @@ payload={'action':'logs'}
 r = requests.get('https://www.cancergenomeinterpreter.org/api/v1/%s' % job_id, headers=headers, params=payload)
 r.json()
 ```
-Download dos resultados - Criar o diretorio com o ID da amostra dentro de results
+### 6. Download dos resultados - Criar o diretorio com o ID da amostra dentro de results
 ```bash
 !mkdir -p results/WP019
 ```
@@ -236,11 +234,11 @@ with open('/content/results/WP019/W019-cgi.zip', 'wb') as fd:
     fd.write(r._content)
 ```
 
-Descompactar o zip com os resultados
+### 7. Descompactar o zip com os resultados
 ```bash
 !unzip -o /content/results/WP019/W019-cgi.zip -d /content/results/WP019/
 ```
-Instalar pip panda 
+### 8. Instalar pip panda 
 ```bash
 !pip install pandas
 ```
@@ -250,15 +248,13 @@ pd.read_csv('/content/results/WP019/alterations.tsv',sep='\t',index_col=False, e
 ```
 
 
-# Amostra WP058
+## Amostra WP058
 
-
-
-Clonar o github Imabrasil-hg38
+### 1. Clonar o github Imabrasil-hg38
 ```bash
 !git clone https://github.com/renatopuga/lmabrasil-hg38.git
 ```
-Agora vá até o github Imabrasil-hg38 na seção Usando CGI via API Rest no google Colab 
+### 2. Agora vá até o github Imabrasil-hg38 na seção Usando CGI via API Rest no google Colab 
 ```python
 !cut -f1-4 /content/lmabrasil-hg38/vep_output/liftOver_WP058_hg19ToHg38.vep.filter.tsv | sed -e "s/CHROM/CHR/g"  > df_WP058-cgi.txt
 ```
@@ -266,7 +262,7 @@ Código para listar as 10 primeiras linhas do código
 ```bash
 !head df_WP058-cgi.txt
 ```
-Enviar Job para CGI API - Entrar no site do CGI, fazer o login e criar o seu token
+### 3. Enviar Job para CGI API - Entrar no site do CGI, fazer o login e criar o seu token <br>
 Fonte: https://www.cancergenomeinterpreter.org/rest_api
 ```python
 import requests
@@ -281,7 +277,7 @@ r = requests.post('https://www.cancergenomeinterpreter.org/api/v1',
 
 r.json()
 ```
-Status do JobID - A partir disso teremos nosso id job
+### 4. Status do JobID - A partir disso teremos nosso id job
 ```python
 import requests
 job_id = "b0a7ea9ba22a3eade52f"
@@ -291,7 +287,7 @@ r = requests.get('https://www.cancergenomeinterpreter.org/api/v1/%s' % job_id, h
 r.json()
 ```
 
-Log ID
+### 5. Log ID
 
 ```python
 import requests
@@ -302,7 +298,7 @@ payload={'action':'logs'}
 r = requests.get('https://www.cancergenomeinterpreter.org/api/v1/%s' % job_id, headers=headers, params=payload)
 r.json()
 ```
-Download dos resultados - Criar o diretorio com o ID da amostra dentro de results
+### 6 . Download dos resultados - Criar o diretorio com o ID da amostra dentro de results
 ```bash
 !mkdir -p results/WP058
 ```
@@ -317,11 +313,11 @@ with open('/content/results/WP058/W058-cgi.zip', 'wb') as fd:
     fd.write(r._content)
 ```
 
-Descompactar o zip com os resultados
+### 7. Descompactar o zip com os resultados
 ```bash
 !unzip -o /content/results/WP058/W058-cgi.zip -d /content/results/WP058/
 ```
-Instalar pip panda 
+### 8. Instalar pip panda 
 ```bash
 !pip install pandas
 ```
@@ -331,15 +327,13 @@ pd.read_csv('/content/results/WP058/alterations.tsv',sep='\t',index_col=False, e
 ```
 
 
-# Amostra WP068
+## Amostra WP068
 
-
-
-Clonar o github Imabrasil-hg38
+### 1. Clonar o github Imabrasil-hg38
 ```bash
 !git clone https://github.com/renatopuga/lmabrasil-hg38.git
 ```
-Agora vá até o github Imabrasil-hg38 na seção Usando CGI via API Rest no google Colab 
+### 2. Agora vá até o github Imabrasil-hg38 na seção Usando CGI via API Rest no google Colab 
 ```python
 !cut -f1-4 /content/lmabrasil-hg38/vep_output/liftOver_WP068_hg19ToHg38.vep.filter.tsv | sed -e "s/CHROM/CHR/g"  > df_WP068-cgi.txt
 ```
@@ -347,7 +341,7 @@ Código para listar as 10 primeiras linhas do código
 ```bash
 !head df_WP068-cgi.txt
 ```
-Enviar Job para CGI API - Entrar no site do CGI, fazer o login e criar o seu token
+### 3. Enviar Job para CGI API - Entrar no site do CGI, fazer o login e criar o seu token<br>
 Fonte: https://www.cancergenomeinterpreter.org/rest_api
 ```python
 import requests
@@ -362,7 +356,7 @@ r = requests.post('https://www.cancergenomeinterpreter.org/api/v1',
 
 r.json()
 ```
-Status do JobID - A partir disso teremos nosso id job
+### 4. Status do JobID - A partir disso teremos nosso id job
 ```python
 import requests
 job_id = "b0a7ea9ba22a3eade52f"
@@ -372,7 +366,7 @@ r = requests.get('https://www.cancergenomeinterpreter.org/api/v1/%s' % job_id, h
 r.json()
 ```
 
-Log ID
+### 5. Log ID
 
 ```python
 import requests
@@ -383,7 +377,7 @@ payload={'action':'logs'}
 r = requests.get('https://www.cancergenomeinterpreter.org/api/v1/%s' % job_id, headers=headers, params=payload)
 r.json()
 ```
-Download dos resultados - Criar o diretorio com o ID da amostra dentro de results
+### 6. Download dos resultados - Criar o diretorio com o ID da amostra dentro de results
 ```bash
 !mkdir -p results/WP068
 ```
@@ -398,11 +392,11 @@ with open('/content/results/WP068/W068-cgi.zip', 'wb') as fd:
     fd.write(r._content)
 ```
 
-Descompactar o zip com os resultados
+### 7. Descompactar o zip com os resultados
 ```bash
 !unzip -o /content/results/WP068/W068-cgi.zip -d /content/results/WP058/
 ```
-Instalar pip panda 
+### 8. Instalar pip panda 
 ```bash
 !pip install pandas
 ```
@@ -411,7 +405,7 @@ import pandas as pd
 pd.read_csv('/content/results/WP068/alterations.tsv',sep='\t',index_col=False, engine= 'python')
 ```
 
-# Tabela 
+## Tabela 
 
 
 Agora vamos juntas todas as tabelas em só uma tabela 
